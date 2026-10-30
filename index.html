@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Crossover Designer</title>
+  <meta name="description" content="Simple passive speaker crossover designer in your browser: T/S simulation, FRD/ZMA import, driver library, optimizer.">
+  <meta name="theme-color" content="#14181f">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><img src="icon.svg" alt="" width="24" height="24"><span>Crossover Designer</span></div>
+    <input id="projectName" class="project-name" aria-label="Project name">
+    <div class="menu">
+      <button id="btnNew" class="ghost" title="New project">New</button>
+      <button id="btnOpen" class="ghost" title="Open project file">Open</button>
+      <button id="btnSave" class="ghost" title="Save project file">Save</button>
+      <button id="btnShare" class="primary" title="Share link">Share</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="chart-wrap" id="chartWrap">
+      <div class="chart-tabs" role="tablist">
+        <button data-chart="spl" class="on">SPL</button>
+        <button data-chart="phase">Phase</button>
+        <button data-chart="imp">Impedance</button>
+        <button data-chart="gd">Delay</button>
+        <span class="spacer"></span>
+        <label class="chk small"><input type="checkbox" id="showRaw"> raw</label>
+        <button id="btnCollapse" class="ghost icon" title="Hide/show chart" aria-label="Hide or show chart">▾</button>
+      </div>
+      <div class="chart-body">
+        <canvas id="chart"></canvas>
+        <div id="readout" class="readout"></div>
+        <div id="legend" class="legend"></div>
+        <div id="summary" class="summary"></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <nav class="tabs" id="tabs">
+        <button data-tab="drivers" class="on"><span class="ti">🔊</span><span>Drivers</span></button>
+        <button data-tab="crossover"><span class="ti">⚡</span><span>Crossover</span></button>
+        <button data-tab="optimize"><span class="ti">🎯</span><span>Optimize</span></button>
+        <button data-tab="export"><span class="ti">⬇</span><span>Export</span></button>
+        <button data-tab="help"><span class="ti">?</span><span>Sources</span></button>
+      </nav>
+      <div id="tab-drivers" class="tab on"></div>
+      <div id="tab-crossover" class="tab"></div>
+      <div id="tab-optimize" class="tab"></div>
+      <div id="tab-export" class="tab"></div>
+      <div id="tab-help" class="tab"></div>
+    </section>
+  </main>
+
+  <dialog id="modal"><form method="dialog" class="modal-inner"><div id="modalBody"></div><div class="modal-actions"><button value="close" class="ghost">Close</button></div></form></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
